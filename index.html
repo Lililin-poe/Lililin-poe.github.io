@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模仿泸州老窖官网</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- 顶部导航栏 -->
+<header class="header">
+    <div class="nav">
+        <div class="logo">泸州老窖</div>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">品牌产品</a></li>
+            <li><a href="#">企业新闻</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- 轮播图 -->
+<div class="banner">
+    <div class="slides" id="slides">
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+    <div class="controls">
+        <div class="dot active" onclick="goToSlide(0)"></div>
+        <div class="dot" onclick="goToSlide(1)"></div>
+        <div class="dot" onclick="goToSlide(2)"></div>
+    </div>
+</div>
+
+<!-- 内容区域 -->
+<div class="content">
+    <div class="section">
+        <h2>企业新闻</h2>
+        <div class="news-list">
+            <div class="news-item">
+                <h3>2024年度经销商表彰大会</h3>
+                <p>3月2日，2024-2025泸州老窖年度经销商表彰暨营销会议在泸州奥体中心体育馆召开。大会以“新征程 精耕细作稳增长 改革创新谋发展”为主题...</p>
+            </div>
+            <div class="news-item">
+                <h3>2025泸州老窖“怀玉杯”酿酒技能大赛</h3>
+                <p>3月1日，2025泸州老窖“怀玉杯”酿酒技能大赛在中国酒城泸州举行。传承与创新融合、技术与艺术碰撞...</p>
+            </div>
+            <div class="news-item">
+                <h3>国际诗酒文化大会</h3>
+                <p>9月12日，国际诗酒文化大会第八届中国酒城·泸州老窖文化艺术周盛大开幕，文学家、艺术家、翻译家...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="footer-content">
+        <p>Copyright ©2025 泸州老窖股份有限公司版权所有</p>
+        <p>服务热线：400-888-1573</p>
+    </div>
+</footer>
+
+<!-- JavaScript 实现轮播图功能 -->
+<script>
+    let currentSlide = 0;
+    const slides = document.getElementById('slides');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = dots.length;
+
+    function goToSlide(index) {
+        currentSlide = index;
+        slides.style.transform = `translateX(-${currentSlide * 100 / totalSlides}%)`;
+        updateDots();
+    }
+
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    // 自动播放
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        goToSlide(currentSlide);
+    }, 5000);
+</script>
+</body>
+</html>
